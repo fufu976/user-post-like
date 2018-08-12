@@ -3,6 +3,7 @@
 var fs        = require('fs');
 var path      = require('path');
 var Sequelize = require('sequelize');
+var debug     = require('debug')('simple-post:models:index');
 var basename  = path.basename(__filename);
 var env       = process.env.NODE_ENV || 'development';
 var config    = require(__dirname + '/../config/config.json')[env];
@@ -20,7 +21,7 @@ fs
     return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
   })
   .forEach(file => {
-    console.log(`DIR: ${__dirname}/${file}`);
+    debug(`model: ${__dirname}/${file}`);
     var model = sequelize['import'](path.join(__dirname, file));
     db[model.name] = model;
   });
