@@ -8,6 +8,8 @@ var hbs  = require('hbs');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var logger = require('morgan');
+var config = require('config');
+var debug = require('debug')('simple-post:server');
 
 //--------------------
 //Project Modules
@@ -15,7 +17,6 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var postsRouter = require('./routes/posts');
-var likesRouter = require('./routes/likes');
 
 var app = express();
 
@@ -31,11 +32,12 @@ app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'html');
 app.engine('html', hbs.__express);
 
+// Databases
+
 // Routers
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/posts', postsRouter);
-app.use('/likes', likesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -49,8 +51,9 @@ app.use(function(err, req, res, next) {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+  res.status(err.status || 500).json({
+    error: err
+  });
 });
 
 module.exports = app;

@@ -1,0 +1,6 @@
+{
+  // Poject Config
+  "project": {
+	"database": "mysql"
+  }
+}
