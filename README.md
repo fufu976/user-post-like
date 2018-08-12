@@ -1,9 +1,9 @@
 # RESTful API app
 * Using Node.js, Express, Sequelize.js, and MySQL.
-* The following instructions is based on the assumption that you use the Ubuntu machine.
+* The following instructions are based on the assumption that you use the Ubuntu machine.
 
 # Getting Started
-### 1. clone repo
+### 1. clone project repository
 ```
 $ git clone https://github.com/fufu976/user-post-like.git
 ```
@@ -14,7 +14,7 @@ $ npm install
 ```
 
 ### 3. sequelize migration
-* Make sure MySQL has already been installed before migration.
+* Make sure MySQL has already been installed before migration implementing.
 * If MySQL has been installed on the machine, modify the username and password in the config/config.json file.
 
 #### Create Database according to the config/config.json
